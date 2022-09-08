@@ -6,7 +6,7 @@
  */
 void _add(stack_t **h, unsigned int line_number)
 {
-	if (*h = NULL || (*h)->next == NULL)
+	if (*h == NULL || (*h)->next == NULL)
 	{
 		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -17,7 +17,7 @@ void _add(stack_t **h, unsigned int line_number)
 	(*h)->prev = NULL;
 }
 /**
- * _sub - subtract secont node from top node
+ * _sub - subtract second node from top node
  * @h: top of list
  * @line_number: line of command
  */
@@ -90,3 +90,5 @@ void _mod(stack_t **h, unsigned int line_number)
 	(*h)->next->n %= (*h)->n;
 	(*h) = (*h)->next;
 	free((*h)->prev);
+	(*h)->prev = NULL;
+}
