@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error: Can't open file\n", argv[1]);
+		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	buffer = malloc(sizeof(char) * 10000);
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 			{
 				free_dlist(&h);
 				printf("L%d: unknown instruction %s\n", line, token);
-				exit(EXIT_FAILURE)
+				exit(EXIT_FAILURE);
 			}
 		}
 		line++;
