@@ -1,4 +1,4 @@
-i#include "monty.h"
+#include "monty.h"
 /**
  * swap - swap location of previous stack with the top stack
  * @h: node to be swapped
