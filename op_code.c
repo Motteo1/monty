@@ -2,7 +2,7 @@
 
 /**
  * get_op_func - function to select correct operation function
- * @token: 1st bytecode input (opcode)
+ * @token1: 1st bytecode input (opcode)
  * Return: pointer to correct operation function
  */
 void (*get_op_func(char *token1))(stack_t **stack, unsigned int line_number)
@@ -15,11 +15,11 @@ void (*get_op_func(char *token1))(stack_t **stack, unsigned int line_number)
 		{"add", _add},
 		{"sub", _sub},
 		{"mul", _mul},
-		{"div", _mul},
+		{"div", _div},
 		{"mod", _mod},
 		{"nop", nop},
 		{NULL, NULL}
-	}
+	};
 	int i = 0;
 
 	while (instruction_s[i].f != NULL)
