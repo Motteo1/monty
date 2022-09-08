@@ -18,4 +18,4 @@ interpreter for Monty ByteCode
 ***
 
 ### Author
-Tim I. Motteo1
+[Motteo1](https://github.com/Motteo1)
