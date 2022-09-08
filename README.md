@@ -2,7 +2,7 @@
 interpreter for Monty ByteCode
 
 ### Interpreter files
-> Monty CodeByte contains opcodes specific to Monty and this interpreter is for: `push`, `pall`, `pint`, `pop, `swap`, `add`, and `nop`
+> Monty CodeByte contains opcodes specific to Monty and this interpreter is for: `push`, `pall`, `pint`, `pop`, `swap`, `add`, and `nop`
 
 #### Description:
 * bytecode folder - contains Monty CODEbyte files
