@@ -5,9 +5,9 @@ interpreter for Monty ByteCode
 > Monty CodeByte contains opcodes specific to Monty and this interpreter is for: `push`, `pall`, `pint`, `pop`, `swap`, `add`, and `nop`
 
 #### Description:
-* bytecode folder - contains Monty CODEbyte files
+* brf folder - contains brainfuck files
+* bytecode folder - contains Monty CodeByte files
 * monty.h - contains all function prototypes for the interpreter
-* main.c - entry into the program
 
 ### Environment
 * Language: C
