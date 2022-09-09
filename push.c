@@ -32,3 +32,7 @@ void push(stack_t **stack, unsigned int line_cnt)
 	{
 		if (!queue_node(stack, atoi(global.argument)))
 		{
+			exit(EXIT_FAILURE);
+		}
+	}
+}

@@ -37,3 +37,6 @@ int isnumber(char *str)
 	for (i = 0; str[i]; i++)
 		if (i < '0' || i > '9')
 			return (0);
+
+	return (1);
+}

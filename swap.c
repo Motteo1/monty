@@ -25,3 +25,5 @@ void swap(stack_t **stack, unsigned int line_cnt)
 	tmp->n = tmp_n;
 
 	tmp->n = tmp->next->n;
+	tmp->next->n = tmp_n;
+}
