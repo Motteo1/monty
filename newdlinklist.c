@@ -1,77 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "monty.h"
+
 /**
- * add_end_node - add node to front of doubly linked list
- * @h: pointer to head of list
- * @n: node data
- * Return: 0 if success, -1 if failed
+ * queue_node - adds a node to a stack_t stack in queue_node
+ * @stack: stack head
+ * @n: number of the node
+ *
+ * Return: newly created node, if memory allocation fails, the function will
+ * return NULL.
  */
-int add_end_node(stack_t **h, int n)
+stack_t *queue_node(stack_t **stack, const int n)
 {
-	stack_t *new;
+	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *current = *stack;
 
-	if (!h)
-		return (-1);
-
-	/* malloc and set node data */
-	new = malloc(sizeof(struct stack_s));
 	if (!new)
 	{
-		printf("Error: malloc failed");
-		return (-1);
+		free(new);
+		return (NULL);
 	}
 	new->n = n;
 
-	/* account for empty linked list */
-	if (*h == NULL)
+	if (!*stack)
 	{
-		*h = new;
 		new->next = NULL;
 		new->prev = NULL;
+		*stack = new;
+		return (new);
 	}
-	else /* insert to front */
-	{
-		new->next = *h;
-		(*h)->prev = new;
-		*h = new;
-	}
-	return (0);
-}
-/**
- * delete_end_node - deletes node at the end of doubly linked list
- * @h: pointer to head of doubly linked list
- */
-void delete_end_node(stack_t **h)
-{
-	stack_t *del = NULL;
 
-	/* account for only one node in list */
-	del = *h;
-	if ((*h)->next == NULL)
+	while (current)
 	{
-		*h = NULL;
-		free(del);
+		if (!current->next)
+		{
+			new->next = NULL;
+			new->prev = current;
+			current->next = new;
+			break;
+		}
+		current = current->next;
 	}
-	else /* delete front, and link correctly */
-	{
-		*h = (*h)->next;
-		(*h)->prev = NULL;
-		free(del);
-	}
-}
-/**
- * free_dlist - frees a doubly linked list with only int data, no strings
- * @h: pointer to head of list
- */
-void free_dlist(stack_t **h)
-{
-	/* return if empty list */
-	if (!h)
-		return;
 
-	while (*h && (*h)->next)
+	return (new);
+}
+
+/**
+ * add_node - adds a node to the start of a stack_t stack
+ * @stack: stack head
+ * @n: number for the new node
+ *
+ * Return: newly created node, if creation fails, the
+ * function will return NULL.
+ */
+stack_t *add_node(stack_t **stack, const int n)
+{
+	stack_t *new = malloc(sizeof(stack_t));
+
+	if (!new)
 	{
-		*h = (*h)->next;
-		free((*h)->prev);
+		fprintf(stderr, "Error: malloc failed\n");
+		free(new);
+		return (NULL);
 	}
+	new->n = n;
+
+	new->next = *stack;
+	new->prev = NULL;
+	if (*stack)
+		(*stack)->prev = new;
+
+	*stack = new;
+
+	return (new);
+}
+
+/**
+ * print_stack - prints the contents of a stack_t stack
+ * @stack: stack head
+ *
+ * Return: number of elements of the list
+ */
+size_t print_stack(const stack_t *stack)
+{
+	size_t c = 0;
+
+	while (stack)
+	{
+		printf("%d\n", stack->n);
+		stack = stack->next;
+		c++;
+	}
+
+	return (c);
+}
+
+/**
+ * free_stack - frees a dlistint_t linked list
+ * @stack: list head
+ *
+ * Return: void
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *current = stack;
+	stack_t *next;
+
+	if (stack)
+	{
+		next = stack->next;
+		while (current)
+		{
+			free(current);
+			current = next;
+			if (next)
 	free(*h);
 }
